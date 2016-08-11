@@ -39,3 +39,9 @@ func (m *Metrics) Get(key string) int64 {
     }
     return 0
 }
+
+func (m *Metrics) GetAll() map[string]int64 {
+    m.RLock()
+    defer m.RUnlock()
+    return m.s
+}
